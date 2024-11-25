@@ -1,0 +1,164 @@
+/*
+ * About Page Styles
+ * Description: Styles for the About Us page
+ * Author: Robotics Club SRMCEM
+ * Version: 1.0
+ */
+
+/* Main Container for About Page */
+#about.page2, .page2 {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px clamp(20px, 5vw, 100px);
+    scroll-snap-align: start;
+    gap: 4rem;
+    z-index: 2;
+    background: var(--background-dark);
+    overflow: hidden;
+}
+
+/* About Image Container */
+.about_image {
+    flex: 1;
+    max-width: 600px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: var(--transition-smooth);
+    opacity: 0;
+    animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.about_image:hover {
+    transform: perspective(1000px) rotateY(0deg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* About Image Styles */
+.about_image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.about_image:hover img {
+    transform: scale(1.05);
+}
+
+/* About Content Container */
+.about_content {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: slideInFromBottom 0.8s 0.2s ease-out forwards;
+}
+
+/* About Heading Styles */
+.about_content h1 {
+    font-family: var(--heading-font);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.about_content h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    transition: var(--transition-smooth);
+}
+
+.about_content:hover h1::after {
+    width: 100px;
+}
+
+/* About Text Styles */
+.about_content p {
+    font-family: var(--content-font);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--text-color-muted);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-smooth);
+    color: var(--text-color);
+}
+
+.social-link:hover {
+    background: rgba(138, 255, 0, 0.15);
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+.social-link i {
+    font-size: 20px;
+    transition: var(--transition-smooth);
+}
+
+.social-link:hover i {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    #about.page2, .page2 {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 60px 20px;
+    }
+
+    .about_image {
+        width: 100%;
+        transform: none;
+    }
+
+    .about_content {
+        text-align: center;
+        align-items: center;
+    }
+
+    .about_content h1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}

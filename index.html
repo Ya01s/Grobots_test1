@@ -1,0 +1,474 @@
+<!-- 
+    Project: Grobots Website V2
+    Description: Official website for the Robotics Club of SRMCEM
+    Author: Robotics Club SRMCEM
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Club SRMCEM</title>
+
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="page1.css">
+    <link rel="stylesheet" href="page2.css">
+    <link rel="stylesheet" href="page3.css">
+    <link rel="stylesheet" href="page4.css">
+    <link rel="stylesheet" href="page6.css">
+    <link rel="stylesheet" href="achievements.css">
+    <!-- Third-party CSS Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.css">
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            background: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Background canvas */
+        #scene {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000000;
+        }
+
+        /* Content overlay styles */
+        .content-overlay {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        /* Navigation styles */
+        nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 255, 0, 0.2);
+        }
+
+        /* Button styles */
+        .btn {
+            background: rgba(138, 255, 0, 0.1);
+            border: 1px solid #8aff00;
+            color: #8aff00;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8aff00;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(138, 255, 0, 0.5);
+        }
+
+        /* Text highlights */
+        .highlight {
+            color: #8aff00;
+            text-shadow: 0 0 10px rgba(138, 255, 0, 0.3);
+        }
+
+        /* Section headings */
+        h1, h2, h3 {
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(138, 255, 0, 0.3);
+        }
+
+        /* Card styles */
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(138, 255, 0, 0.2);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(138, 255, 0, 0.2);
+        }
+
+        /* Links */
+        a {
+            color: #8aff00;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(138, 255, 0, 0.5);
+        }
+
+        /* Logo styles */
+        .logo img {
+            filter: drop-shadow(0 0 10px rgba(138, 255, 0, 0.3));
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8aff00;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(138, 255, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="main">
+            <!-- Landing Page Background -->
+            <canvas id="scene"></canvas>
+
+            <!-- Navigation Bar Section -->
+            <nav id="nav">
+                <!-- Logo Section -->
+                <div class="logo-container">
+                    <a href="#home" class="logo">
+                        <img src="Assets/Grobotslogo.png" class="logo-grobots" alt="Grobots Logo">
+                    </a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                        <li><a href="#page3">Team</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Overlay -->
+                <div class="nav-overlay"></div>
+            </nav>
+
+            <!-- Home Section (Page 1) -->
+            <div id="home" class="page1">
+                <h1>ROBOTICS CLUB</h1>
+                <h2>SRMCEM</h2>
+                <h3>Welcomes All Enthusiasts!</h3>
+                <p><b>Welcome, robotics enthusiasts! Join us in exploring innovation, engineering marvels, and the limitless possibilities that robotics brings to our future!</b></p>
+            </div>
+
+            <!-- About Us Section (Page 2) -->
+            <div id="about" class="page2">
+                <div class="about_image">
+                    <img src="Assets/WhatsApp Image 2024-10-30 at 22.42.27_14e0d7aa.jpg" alt="Gantavya 2023">
+                </div>
+                <div class="about_content">
+                    <h1>About Us</h1>
+                    <p>Welcome to the Robotics Club of SRMCEM, where innovation meets engineering excellence! We are a dynamic community of aspiring engineers, tech enthusiasts, and creative minds working together to explore the fascinating world of robotics.</p>
+                    <p>Our club provides a platform for students to gain hands-on experience in robotics, participate in competitions, and work on cutting-edge projects. From building autonomous robots to developing innovative solutions, we're committed to pushing the boundaries of what's possible in robotics.</p>
+                </div>
+            </div>
+
+            <!-- Team Section (Page 3) -->
+            <div id="page3" class="team-section">
+                <h1 class="team-title">Meet Our Amazing Team</h1>
+                <div class="team-container">
+                    <div class="team-scroll" id="teamMembersContainer">
+                        <!-- Team member cards will be generated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Initiatives Section -->
+            <section id="initiatives">
+                <h1 class="initiatives-title">Our Impact</h1>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Initiatives</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Members</div>
+                    </div>
+                </div>
+                
+                <!-- Initiative Cards -->
+                <div class="initiative-cards">
+                    <!-- Patents Initiative -->
+                    <div class="initiative-card">
+                        <div class="initiative-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="initiative-title">Patents & Research</h3>
+                        <p class="initiative-description">
+                            Fostering innovation through patent development and research initiatives. Our members work on cutting-edge robotics technologies and solutions.
+                        </p>
+                        <div class="initiative-stats">
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">5+</div>
+                                <div class="initiative-stat-label">Patents Filed</div>
+                            </div>
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">10+</div>
+                                <div class="initiative-stat-label">Research Papers</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Robotics Classes -->
+                    <div class="initiative-card">
+                        <div class="initiative-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="initiative-title">Robotics Classes</h3>
+                        <p class="initiative-description">
+                            Comprehensive robotics education program covering electronics, programming, and mechanical design. Learn from experienced mentors and hands-on projects.
+                        </p>
+                        <div class="initiative-stats">
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">100+</div>
+                                <div class="initiative-stat-label">Students Trained</div>
+                            </div>
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">20+</div>
+                                <div class="initiative-stat-label">Workshops</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Girl Empowerment -->
+                    <div class="initiative-card">
+                        <div class="initiative-icon">
+                            <i class="fas fa-venus"></i>
+                        </div>
+                        <h3 class="initiative-title">Girl Empowerment</h3>
+                        <p class="initiative-description">
+                            Empowering women in STEM through dedicated mentorship, workshops, and leadership opportunities in robotics and technology.
+                        </p>
+                        <div class="initiative-stats">
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">40%</div>
+                                <div class="initiative-stat-label">Female Members</div>
+                            </div>
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">15+</div>
+                                <div class="initiative-stat-label">Women Leaders</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="achievements" class="achievements-section">
+                <div class="container">
+                    <div class="achievements-header">
+                        <p>ACHIEVEMENTS</p>
+                        <p>Achievements That Have Lead Us Here</p>
+                        <p>Let's have a look at them!</p>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        
+                        <!-- Achievement Cards -->
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">February, 2021</p>
+                                <h4 class="achievement-title">🏆 Parul University, Gujarat</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">Projections</p>
+                                    <p>🥉 Drone 3rd Rank:<br>Nirbhay Chaudhari & Chaitanaya Gupta</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">December, 2021</p>
+                                <h4 class="achievement-title">🏆 SNIST, Hyderabad</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">(Decepticons x Grobots)</p>
+                                    <p>🥇 Robowars 1st<br>
+                                    🥈 Robowars 2nd<br>
+                                    🥉 Robowars 3rd</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">2022</p>
+                                <h4 class="achievement-title">🏆 AKTU Zonals</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">🥇 Roborace</p>
+                                    <p>Vivek Singh (IT 4th Year)<br>
+                                    Ayush Kumar Singh (IT 4th Year)<br>
+                                    Taha Yaseen Alvi (EC 4th Year)<br>
+                                    Ankit Shukla (EC 4th Year)</p>
+                                    <p class="font-bold">🥇 Robowars</p>
+                                    <p>Ayush Kumar Singh (IT 4th Year)<br>
+                                    Snehil Saxena (IT 4th Year)<br>
+                                    Aakanksh Singh (IT 4th Year)<br>
+                                    Dheeraj Kumar Rajput (EC 4th Year)</p>
+                                    <p class="font-bold">🥇 Drone Race</p>
+                                    <p>Nirbhay Chaudhari (CS 4th Year)<br>
+                                    Aman Katiyar (IT 4th Year)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">2022</p>
+                                <h4 class="achievement-title">🏆 GL Bajaj, Noida</h4>
+                                <div class="achievement-description">
+                                    <p>🥉 Nirbhay</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">2022</p>
+                                <h4 class="achievement-title">🏆 JECRC College, Rajasthan</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">🥉 Drone Race</p>
+                                    <p>Aman Katiyar (IT 4th Year)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">Feb, 2023</p>
+                                <h4 class="achievement-title">🏆 Delhi Technological University (DTU)</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">🥇 Drone Race</p>
+                                    <p>🥉 Robo Race</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">March, 2023</p>
+                                <h4 class="achievement-title">🏆 IIT, Ropar</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">(Decepticons x Grobots)</p>
+                                    <p>🥉 Robowar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">April, 2023</p>
+                                <h4 class="achievement-title">🏆 IET, Lucknow</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">🥇 Drone Race</p>
+                                    <p>Aman Katiyar (IT 4th Year)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">March, 2024</p>
+                                <h4 class="achievement-title">🏆 Amity Noida</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">🥇 Robosoccer</p>
+                                    <p>Nirbhay (1st)<br>
+                                    Aman Katiyar (3rd)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">2024</p>
+                                <h4 class="achievement-title">🏆 BML Munjal</h4>
+                                <div class="achievement-description">
+                                    <!-- Add specific details if available -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-content">
+                                <p class="achievement-date">6th March, 2024</p>
+                                <h4 class="achievement-title">🏆 Amity, Lucknow</h4>
+                                <div class="achievement-description">
+                                    <p class="font-bold">🥇 Roborace</p>
+                                    <p>Dheeraj<br>
+                                    Himanshu<br>
+                                    Sanskar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Contact Section -->
+            <div id="contact" class="page6">
+                <div class="contact">
+                    <!-- Embedded Google Maps iframe for location -->
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.378950874851!2d81.06994017504924!3d26.891465976659845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399958aa7cde631d%3A0xa40f85bf5cea3cc2!2sShri%20Ramswaroop%20Memorial%20Group%20of%20Professional%20Colleges%20MBA%20Block!5e0!3m2!1sen!2sin!4v1730471692550!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <!-- Contact form for user messages -->
+                    <div class="form">
+                        <h1>Contact Us</h1>
+                        <form action="https://formsubmit.co/yashtiwarit67@gmail.com" method="POST">
+                            <input type="text" name="Name" required placeholder="Name">
+                            <input type="email" name="Mail" required placeholder="Email">
+                            <input type="text" name="Subject" required placeholder="Subject">
+                            <textarea name="Message" required placeholder="Message"></textarea>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+
+    <!-- External JavaScript Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="landing-background-vantajs.js"></script>
+    <script src="navbar.js"></script>
+    <script src="team-members.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
